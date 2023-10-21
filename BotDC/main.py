@@ -4,6 +4,9 @@ from exs import *
 import random
 from ias import * 
 from googletrans import Translator
+from dotenv import load_dotenv 
+import os
+load_dotenv()
 
 intents = discord.Intents.default()
 intents.message_content = True  # Configurar a intenção como True
@@ -133,5 +136,6 @@ async def play(clx):
         await clx.send_bot(bot.channel, "O bot ja esta em um canal de voz")
     except Exception as error:
         await clx.send_bot(bot.channel, "Ein Error: ```{error}```".format(error=error))      
- 
-bot.run('MTE2NTAxNjk5OTQ3NTMwMjUzMg.Glu7Wm.tLJTNef3_yT9hEZJPoTR8-odew9Q5J2A9S0kso') 
+
+token = os.environ.get("TOKEN")   
+bot.run(token=token) 
